@@ -316,7 +316,8 @@ export default function ServicesForm({
           htmlFor="currentDetail"
           className="block text-sm font-medium text-gray-700 mb-1"
         >
-          Detalles / Protocolos <span className="text-red-500">*</span>
+          Detalles / Protocolos / Incluye{' '}
+          <span className="text-red-500">*</span>
         </label>
         <div className="flex items-center space-x-2 mt-1">
           <input

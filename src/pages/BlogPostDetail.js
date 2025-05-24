@@ -287,37 +287,53 @@ function BlogPostDetail() {
           transition={{ duration: 0.5, delay: 0.7 }}
         >
           {post.info && post.info.length > 0 ? (
-            post.info.map((paragraph, index) => <p key={index}>{paragraph}</p>)
+            post.info.length === 1 ? (
+              <>
+                <p>{post.info[0]}</p>
+
+                {post.image_urls && post.image_urls.length > 1 && (
+                  <motion.div
+                    className="mt-12 grid grid-cols-2 gap-4"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 0.8 }}
+                  >
+                    {post.image_urls.slice(1).map((url, index) => (
+                      <motion.img
+                        key={index}
+                        src={url}
+                        alt={`Imagen adicional ${index + 1} para ${post.title}`}
+                        className="rounded-lg shadow-md object-cover w-full h-40 transition-transform duration-300 hover:scale-105"
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.4, delay: index * 0.1 }}
+                      />
+                    ))}
+                  </motion.div>
+                )}
+              </>
+            ) : (
+              post.info.map((paragraph, index) => (
+                <React.Fragment key={index}>
+                  <p>{paragraph}</p>
+                  {post.image_urls &&
+                    post.image_urls.length > index + 1 && ( // aseguramos que hay imagen para este párrafo
+                      <motion.img
+                        src={post.image_urls[index + 1]}
+                        alt={`Imagen ${index + 1} para ${post.title}`}
+                        className="rounded-lg shadow-md object-cover w-full h-[60vh] transition-transform duration-300 hover:scale-105"
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.4, delay: index * 0.1 }}
+                      />
+                    )}
+                </React.Fragment>
+              ))
+            )
           ) : (
             <p>Contenido no disponible.</p>
           )}
         </motion.div>
-
-        {post.image_urls && post.image_urls.length > 1 && (
-          <motion.div
-            className="mt-12"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.8 }}
-          >
-            <h3 className="text-xl font-semibold text-gray-800 mb-4 border-b pb-2">
-              Imágenes Adicionales
-            </h3>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              {post.image_urls.slice(1).map((url, index) => (
-                <motion.img
-                  key={index}
-                  src={url}
-                  alt={`Imagen adicional ${index + 1} para ${post.title}`}
-                  className="rounded-lg shadow-md object-cover w-full h-40 cursor-pointer transition-transform duration-300 hover:scale-105"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
-                />
-              ))}
-            </div>
-          </motion.div>
-        )}
 
         <motion.section
           className="mt-16 pt-8 border-t border-gray-200"

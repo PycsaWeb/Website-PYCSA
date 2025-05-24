@@ -6,7 +6,7 @@ export default function AboutHero() {
   return (
     <div className="relative bg-gradient-to-r from-gray-800 via-gray-900 to-black py-20 md:py-28 px-4 text-center border-b border-gray-700 overflow-hidden">
       <div
-        className="absolute inset-0 bg-cover bg-center opacity-60"
+        className="absolute inset-0 bg-cover bg-center opacity-60 bg-fixed"
         style={{
           backgroundImage: "url('/assets/HeroNosotros.jpg')",
         }}

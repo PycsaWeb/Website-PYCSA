@@ -86,30 +86,7 @@ function Blog() {
       <Header />
       <div className="bg-gray-50 min-h-screen">
         <HeroBlog />
-        <FadeInSection>
-          <div className="flex justify-center py-4">
-            <div className="flex flex-col items-center -space-y-6">
-              {[...Array(3)].map((_, i) => (
-                <svg
-                  key={i}
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-8 h-8 text-orange-500 animate-bounce"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              ))}
-            </div>
-          </div>
-        </FadeInSection>
-        <div className="container mx-auto px-4 pb-8 md:pb-12">
+        <div className="container mx-auto px-4 py-8 md:py-12">
           <FadeInSection>
             <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-8 md:mb-12 text-center">
               Blog{' '}

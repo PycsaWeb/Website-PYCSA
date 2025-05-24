@@ -19,7 +19,7 @@ const HeroContact = () => {
   return (
     <div className="relative bg-gradient-to-r from-gray-800 via-gray-900 to-black py-20 md:py-28 px-4 text-center border-b border-gray-700 overflow-hidden">
       <div
-        className="absolute inset-0 bg-cover bg-center opacity-50"
+        className="absolute inset-0 bg-cover bg-center opacity-50 bg-fixed"
         style={{
           backgroundImage: "url('/assets/HeroContact.jpg')",
         }}
@@ -145,33 +145,7 @@ export default function ContactPage() {
       <Header />
       <div className="bg-gray-50 text-gray-800">
         <HeroContact />
-        <motion.div
-          variants={itemVariants}
-          className="flex justify-center py-4"
-          initial="hidden"
-          animate="visible"
-        >
-          <div className="flex flex-col items-center -space-y-6">
-            {[...Array(3)].map((_, i) => (
-              <svg
-                key={i}
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-8 h-8 text-orange-500 animate-bounce"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            ))}
-          </div>
-        </motion.div>
-        <section className="pb-16 md:pb-24 text-gray-700">
+        <section className="py-14 md:py-22 text-gray-700">
           <motion.div
             className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start"
             variants={containerVariants}

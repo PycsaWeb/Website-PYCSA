@@ -2,7 +2,7 @@ import FadeInSection from '../FadeInSection.js'; // Ajusta la ruta si es necesar
 
 export default function MissionVision() {
   return (
-    <section className="pb-16 px-4 bg-white">
+    <section className="py-16 px-4 bg-white">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
         <FadeInSection>
           <div className="p-8 rounded-lg shadow-lg hover:shadow-xl transition duration-300 ease-in-out transform hover:-translate-y-1">

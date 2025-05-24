@@ -16,36 +16,15 @@ const listItemVariants = {
 };
 
 export default function Sidebar() {
-  const [services, setServices] = useState([]);
-  const [loadingServices, setLoadingServices] = useState(true);
   const [recentPosts, setRecentPosts] = useState([]);
   const [loadingRecent, setLoadingRecent] = useState(true);
-
-  useEffect(() => {
-    async function getServices() {
-      setLoadingServices(true);
-      const { data, error } = await supabase
-        .from('services')
-        .select('name_service')
-        .limit(10);
-
-      if (error) {
-        console.error('Error fetching services for categories:', error);
-      } else {
-        setServices(data.map((s) => s.name_service));
-      }
-      setLoadingServices(false);
-    }
-
-    getServices();
-  }, []);
 
   useEffect(() => {
     async function getRecentPosts() {
       setLoadingRecent(true);
       const { data, error } = await supabase
         .from('blogs')
-        .select('id, title')
+        .select('id, title, category')
         .order('date', { ascending: false })
         .limit(5);
 
@@ -75,7 +54,7 @@ export default function Sidebar() {
         />
         Categorías
       </h3>
-      {loadingServices ? (
+      {loadingRecent ? (
         <div className="text-center py-2">
           <FontAwesomeIcon
             icon={faSpinner}
@@ -83,9 +62,9 @@ export default function Sidebar() {
             className="text-gray-400"
           />
         </div>
-      ) : services.length > 0 ? (
+      ) : recentPosts.length > 0 ? (
         <ul className="space-y-2">
-          {services.map((serviceName, index) => (
+          {recentPosts.map((post, index) => (
             <motion.li
               key={index}
               variants={listItemVariants}
@@ -94,11 +73,11 @@ export default function Sidebar() {
               transition={{ duration: 0.3, delay: index * 0.05 }}
             >
               <Link
-                // to={`/blog/category/${serviceName.toLowerCase().replace(/\s+/g, '-')}`}
+                //to={`/blog/${recentPosts}`}
                 to="/blog"
                 className="text-gray-700 hover:text-brand-orange transition duration-200 ease-in-out block hover:translate-x-1"
               >
-                {serviceName}
+                {post.category}
               </Link>
             </motion.li>
           ))}
@@ -133,7 +112,7 @@ export default function Sidebar() {
               animate="visible"
               transition={{
                 duration: 0.3,
-                delay: (services.length + index) * 0.05,
+                delay: (recentPosts.length + index) * 0.05,
               }}
             >
               <Link

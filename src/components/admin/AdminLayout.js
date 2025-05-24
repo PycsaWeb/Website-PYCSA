@@ -1,16 +1,12 @@
 // src/components/admin/AdminLayout.js
 import React, { useState } from 'react';
 import { supabase } from '../../SupabaseClient';
-import AdminProductPage from './AdminProductPage';
 import AdminServicesPage from './AdminServicesPage';
-import AdminDeliveryZone from './AdminDeliveryZonePage';
 import AdminBlogPage from './AdminBlogsPage';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faSignOutAlt,
   faArrowLeft,
-  faShippingFast,
-  faStore,
   faUserGear,
 } from '@fortawesome/free-solid-svg-icons';
 import { motion } from 'framer-motion';
@@ -76,25 +72,6 @@ export default function AdminLayout({ user }) {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="flex flex-col items-center justify-center bg-white p-8 rounded-2xl shadow-lg cursor-pointer hover:shadow-2xl transition"
-              onClick={() => setSelectedPage('products')}
-            >
-              <FontAwesomeIcon
-                icon={faStore}
-                size="3x"
-                className="text-orange-500 mb-4"
-              />
-              <h3 className="text-xl font-semibold text-gray-700 mb-2">
-                Gestionar Productos
-              </h3>
-              <p className="text-gray-500 text-center">
-                Añade, edita o elimina productos fácilmente.
-              </p>
-            </motion.div>
-
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex flex-col items-center justify-center bg-white p-8 rounded-2xl shadow-lg cursor-pointer hover:shadow-2xl transition"
               onClick={() => setSelectedPage('services')}
             >
               <FontAwesomeIcon
@@ -107,25 +84,6 @@ export default function AdminLayout({ user }) {
               </h3>
               <p className="text-gray-500 text-center">
                 Controla los servicios que ofreces en tu tienda.
-              </p>
-            </motion.div>
-
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex flex-col items-center justify-center bg-white p-8 rounded-2xl shadow-lg cursor-pointer hover:shadow-2xl transition"
-              onClick={() => setSelectedPage('deliveryzone')}
-            >
-              <FontAwesomeIcon
-                icon={faShippingFast}
-                size="3x"
-                className="text-orange-500 mb-4"
-              />
-              <h3 className="text-xl font-semibold text-gray-700 mb-2">
-                Gestionar Delivery
-              </h3>
-              <p className="text-gray-500 text-center">
-                Controla los precios de Delivery.
               </p>
             </motion.div>
 
@@ -150,9 +108,7 @@ export default function AdminLayout({ user }) {
           </div>
         ) : (
           <>
-            {selectedPage === 'products' && <AdminProductPage />}
             {selectedPage === 'services' && <AdminServicesPage />}
-            {selectedPage === 'deliveryzone' && <AdminDeliveryZone />}
             {selectedPage === 'blog' && <AdminBlogPage />}
           </>
         )}
@@ -161,7 +117,7 @@ export default function AdminLayout({ user }) {
       {/* Footer */}
       <footer className="bg-gray-200 text-center py-4">
         <p className="text-sm text-gray-600">
-          &copy; {new Date().getFullYear()} Tu Tienda - Panel Admin
+          &copy; {new Date().getFullYear()} PycsaWeb - Panel Admin
         </p>
       </footer>
     </div>
