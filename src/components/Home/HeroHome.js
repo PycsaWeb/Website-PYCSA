@@ -49,7 +49,7 @@ export default function HeaderHome() {
             <div className="relative w-full h-[400px] md:h-[500px] lg:h-[550px] overflow-hidden rounded-lg ">
               <FadeInImage
                 className="absolute inset-0 w-full h-full object-cover object-top"
-                src="/assets/guard2.png"
+                src="/assets/avatarmen.png"
                 alt="Guardia de seguridad firme"
                 onContextMenu={(e) => e.preventDefault()}
                 draggable="false"
