@@ -1,0 +1,4 @@
+# Archivo robots.txt para Protección y Control, S.A.
+User-agent: *
+Allow: /
+Sitemap: https://proteccionycontrol.vercel.app/sitemap.xml
